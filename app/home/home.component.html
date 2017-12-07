@@ -1,0 +1,46 @@
+<RadSideDrawer tkExampleTitle tkToggleNavButton>
+    <!-- menu -->
+    <StackLayout tkDrawerContent class="sideStackLayout">
+        <StackLayout class="sideStackLayout">
+            <StackLayout horizontalAlignment="right">
+                <Button text="&#xf00d;" class="fa wl-transparent-btn" (tap)="closeDrawerTap()"></Button>
+            </StackLayout>     
+            <Label text="Profile" 
+                [nsRouterLink]="['./profile']" 
+                nsRouterLinkActive="active"
+                (tap)="closeDrawerTap()"
+                class="sideLabel">
+            </Label>
+            <Label text="Dashoboard" 
+                [nsRouterLink]="['./dashboard']" 
+                nsRouterLinkActive="active" 
+                (tap)="closeDrawerTap()"
+                class="sideLabel">
+            </Label>
+            <Label text="Learn" 
+                [nsRouterLink]="['./learning']" 
+                nsRouterLinkActive="active"
+                (tap)="closeDrawerTap()" 
+                class="sideLabel">
+            </Label>
+            <Label text="Contact" 
+                [nsRouterLink]="['/contact']" 
+                nsRouterLinkActive="active"
+                (tap)="closeDrawerTap()" 
+                class="sideLabel">
+            </Label>
+        </StackLayout>
+    </StackLayout>
+    <!-- main content -->
+    <StackLayout tkMainContent padding="15">
+        <!-- action bar -->
+        <ActionBar class="action-bar">
+            <GridLayout columns="*, auto">
+                <Label col="0" text="Dashboard" color="lightgray" padding="10"></Label>
+                <Button col="1" text="&#xf0c9;" class="fa wl-transparent-btn" (tap)="openDrawer()"></Button>
+            </GridLayout>
+        </ActionBar>
+        <!-- outlet -->
+        <router-outlet></router-outlet>
+    </StackLayout>
+</RadSideDrawer>

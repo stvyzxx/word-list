@@ -1,0 +1,12 @@
+<StackLayout class="wl-content">
+    <Label text="List" class="h2"></Label>
+    <!-- <RadDataForm tkExampleTitle tkToggleNavButton [source]="list.words"></RadDataForm> -->
+    <StackLayout height="50" *ngFor="let index of [1,2,3,4]">  
+        <GridLayout columns="150, 150, auto">
+            <TextField class="wl-input" id="firstTextFieldId" hint="Original" col="0"></TextField>
+            <TextField class="wl-input" id="firstTextFieldId" hint="Translation" col="1"></TextField>
+            <Button tap="" text="remove" col="2"></Button>
+        </GridLayout>
+    </StackLayout>
+    <Button tap="" text="Add pair"></Button>
+</StackLayout>

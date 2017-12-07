@@ -1,0 +1,7 @@
+# Ignore everything
+app/**/*.js
+node_modules/
+platforms/
+hooks/
+.vscode
+

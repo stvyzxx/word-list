@@ -1,0 +1,18 @@
+<ScrollView class="coverImage">
+    <StackLayout orientation="vertical" height="450">
+        <Image src="res://logo" stretch="none" horizontalAlignment="center"></Image>
+
+        <RadDataForm tkExampleTitle tkToggleNavButton 
+            [source]="user" 
+            [metadata]="personMetadata"
+            (propertyValidate)="onPropertyValidate($event)">
+        </RadDataForm>
+        
+        <Button text="Register" class="submit-button wl-btn" (tap)="register()"></Button>
+        <Button 
+            class="wl-link"
+            text="Sign In"
+            [nsRouterLink]="['../login']">
+        </Button>
+    </StackLayout>
+</ScrollView>

@@ -1,0 +1,35 @@
+<StackLayout class="wl-content">
+    <Label text="Dashboard" class="h2"></Label>
+    <!-- statistic -->
+    <GridLayout columns="*" height="50">
+        <Label col="0" text="Statistic section"></Label>
+    </GridLayout>
+
+    <!-- lists -->
+    <GridLayout columns="auto, auto" height="400">
+        <StackLayout col="0" width="50%">
+            <Label text="Popular lists" class="h2" textAlignment="center"></Label>
+            <ListView [items]="myItems">
+                <ng-template let-item="item" let-i="index" let-third="third">
+                    <StackLayout>
+                        <Label [text]='item.name'></Label>
+                    </StackLayout>
+                </ng-template>
+            </ListView>
+        </StackLayout>
+
+        <StackLayout col="1" width="50%">
+            <Label text="Unknown words" class="h2" textAlignment="center"></Label>
+        </StackLayout>
+    </GridLayout>
+
+    <!-- actions -->
+    <GridLayout columns="auto, auto">
+        <StackLayout col="0" width="50%" horizontalAlignment="center">
+            <Button col="1" text="Create list" class="wl-btn" [nsRouterLink]="['/home/list']"></Button>
+        </StackLayout>
+        <StackLayout col="1" width="50%" horizontalAlignment="center">
+                <Button col="1" text="Learn random" class="wl-btn" (tap)="getRandomList()"></Button>
+        </StackLayout>
+    </GridLayout>
+</StackLayout>
