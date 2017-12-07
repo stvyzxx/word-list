@@ -1,12 +1,19 @@
 <StackLayout class="wl-content">
     <Label text="List" class="h2"></Label>
-    <!-- <RadDataForm tkExampleTitle tkToggleNavButton [source]="list.words"></RadDataForm> -->
-    <StackLayout height="50" *ngFor="let index of [1,2,3,4]">  
+    <StackLayout height="50" *ngFor="let item of list.words; index as i;">  
         <GridLayout columns="150, 150, auto">
-            <TextField class="wl-input" id="firstTextFieldId" hint="Original" col="0"></TextField>
-            <TextField class="wl-input" id="firstTextFieldId" hint="Translation" col="1"></TextField>
-            <Button tap="" text="remove" col="2"></Button>
+            <TextField [(ngModel)]="item.original" class="wl-input" hint="Original" col="0"></TextField>
+            <TextField [(ngModel)]="item.translation" class="wl-input" hint="Translation" col="1"></TextField>
+            <Button (tap)="removePair(i)" text="remove" col="2"></Button>
         </GridLayout>
     </StackLayout>
-    <Button tap="" text="Add pair"></Button>
+    <!-- actions -->
+    <GridLayout columns="auto, auto">
+        <StackLayout col="0" width="50%" horizontalAlignment="center">
+            <Button (tap)="addPair()" text="Add pair"  class="wl-btn"></Button>
+        </StackLayout>
+        <StackLayout col="1" width="50%" horizontalAlignment="center">
+            <Button (tap)="saveList()" col="1" text="Save" class="wl-btn"></Button>
+        </StackLayout>
+    </GridLayout>
 </StackLayout>
