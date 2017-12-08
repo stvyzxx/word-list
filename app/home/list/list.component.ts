@@ -21,23 +21,40 @@ export class WlListComponent implements OnInit {
       private apiService: ApiService
   ) { }
 
-  ngOnInit () {
+  ngOnInit() {
       this.list = new List();
   }
 
-  addPair () {
+  addPair() {
     const pair = {
       original: null,
       translation: null
-    }
+    };
     this.list.words.push(pair);
   }
 
-  removePair (index) {
+  removePair(index) {
     this.list.words.splice(index, 1);
   }
 
-  saveList () {
+  saveList() {
+    const data = {
+      path: '/lists/newlist',
+      data: {
+        name: 'testList',
+        words: [
+          {
+            original: 'dog',
+            translation: 'pes'
+          },
+          {
+            original: 'cat',
+            translation: 'kit'
+          }
+        ]
+      }
+    };
 
+    this.apiService.setUserData(data);
   }
 }

@@ -4,36 +4,40 @@ import { NativeScriptRouterModule } from 'nativescript-angular/router';
 
 import { AuthGuard } from '../shared/services/auth-guard.service';
 
+import { WlDashboardComponent } from './dashboard/dashboard.component';
 import { WlHomeComponent } from './home.component';
 import { WlLearningComponent } from './learning/learning.component';
-import { WlDashboardComponent } from './dashboard/dashboard.component';
-import { WlProfileComponent } from './profile/profile.component';
 import { WlListComponent } from './list/list.component';
+import { WlProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
-    {
-        path: '',
-        component: WlHomeComponent,
-        children: [
-            { 
-                path: 'dashboard', 
-                component: WlDashboardComponent,
-            },
-            { 
-                path: 'learning',
-                component: WlLearningComponent,
-            },
-            { 
-                path: 'profile',
-                component: WlProfileComponent,
-            },
-            { 
-                path: 'list',
-                component: WlListComponent
-            }
-        ],
+  {
+    path: '',
+    component: WlHomeComponent,
+    children: [
+      {
+        path: 'dashboard',
+        component: WlDashboardComponent,
         canActivate: [AuthGuard]
-    }
+      },
+      {
+        path: 'learning',
+        component: WlLearningComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'profile',
+        component: WlProfileComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'list',
+        component: WlListComponent,
+        canActivate: [AuthGuard]
+      }
+    ],
+    canActivate: [AuthGuard]
+  }
 ];
 
 @NgModule({

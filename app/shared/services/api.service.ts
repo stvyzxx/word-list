@@ -1,34 +1,44 @@
 import { Injectable } from '@angular/core';
+import { DataService } from './data.service';
 
 import firebase = require('nativescript-plugin-firebase');
 
-
 @Injectable()
 export class ApiService {
-    constructor() { }
 
-    getCurrentUser() {
-        return firebase.getCurrentUser();
-    }
+  constructor(
+    private dataService: DataService
+  ) {}
 
-    logIn(user) {
-        return firebase.login({
-            type: firebase.LoginType.PASSWORD,
-            passwordOptions: {
-                email: user.email,
-                password: user.password
-            }
-        })
-    }
+  getCurrentUser() {
+    return firebase.getCurrentUser();
+  }
 
-    logOut() {
-        return firebase.logout();
-    }
+  logIn(user) {
+    return firebase.login({
+      type: firebase.LoginType.PASSWORD,
+      passwordOptions: {
+        email: user.email,
+        password: user.password
+      }
+    });
+  }
 
-    register(user) {
-        return firebase.createUser({
-            email: user.email,
-            password: user.password
-        })
-    }
+  logOut() {
+    return firebase.logout();
+  }
+
+  register(user) {
+    return firebase.createUser({
+      email: user.email,
+      password: user.password
+    });
+  }
+
+  setUserData(dataToSave) {
+    firebase.setValue(
+      '/users/' + this.dataService.currentUser + dataToSave.path,
+      dataToSave.data
+    );
+  }
 }
