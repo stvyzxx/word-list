@@ -36,7 +36,7 @@ export class ApiService {
   }
 
   setUserData(dataToSave) {
-    firebase.setValue(
+    firebase.push(
       '/users/' + this.dataService.currentUser + dataToSave.path,
       dataToSave.data
     );

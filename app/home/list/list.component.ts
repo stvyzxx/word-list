@@ -39,20 +39,8 @@ export class WlListComponent implements OnInit {
 
   saveList() {
     const data = {
-      path: '/lists/newlist',
-      data: {
-        name: 'testList',
-        words: [
-          {
-            original: 'dog',
-            translation: 'pes'
-          },
-          {
-            original: 'cat',
-            translation: 'kit'
-          }
-        ]
-      }
+      path: '/lists',
+      data: this.list
     };
 
     this.apiService.setUserData(data);

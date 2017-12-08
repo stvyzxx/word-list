@@ -1,5 +1,7 @@
 <StackLayout class="wl-content">
     <Label text="List" class="h2"></Label>
+    <Label text="Name" class="h4"></Label>
+    <TextField [(ngModel)]="list.name" class="wl-input" hint="Type a name"></TextField>
     <StackLayout height="50" *ngFor="let item of list.words; index as i;">  
         <GridLayout columns="150, 150, auto">
             <TextField [(ngModel)]="item.original" class="wl-input" hint="Original" col="0"></TextField>
