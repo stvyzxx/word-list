@@ -35,10 +35,31 @@ export class ApiService {
     });
   }
 
-  setUserData(dataToSave) {
-    firebase.push(
-      '/users/' + this.dataService.currentUser + dataToSave.path,
-      dataToSave.data
+  setUserData(params) {
+    return firebase.push(
+      '/users/' + this.dataService.currentUser + params.path,
+      params.data
+    );
+  }
+
+  getUserData(params) {
+    const onQueryEvent = result => {
+      if (!result.error) {
+        // console.log("Event type: " + result.type);
+        // console.log("Key: " + result.key);
+        // console.log("Value: " + JSON.stringify(result.value));
+      }
+    };
+    return firebase.query(
+      onQueryEvent,
+      '/users/' + this.dataService.currentUser + params.path,
+      {
+        singleEvent: true,
+        orderBy: {
+          type: firebase.QueryOrderByType.CHILD,
+          value: 'since'
+        },
+      }
     );
   }
 }

@@ -1,6 +1,4 @@
 import { Injectable } from '@angular/core';
-// import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-// import { Observable } from 'rxjs/Observable';
 
 export interface usersData {
     uid: string;

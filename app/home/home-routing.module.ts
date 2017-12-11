@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 import { NativeScriptRouterModule } from 'nativescript-angular/router';
 
 import { AuthGuard } from '../shared/services/auth-guard.service';
@@ -9,7 +9,8 @@ import { WlHomeComponent } from './home.component';
 import { WlLearningComponent } from './learning/learning.component';
 import { WlListComponent } from './list/list.component';
 import { WlProfileComponent } from './profile/profile.component';
-
+import { ListsResolver, ListResolver } from './services/resolvers.service';
+  
 const routes: Routes = [
   {
     path: '',
@@ -18,7 +19,10 @@ const routes: Routes = [
       {
         path: 'dashboard',
         component: WlDashboardComponent,
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
+        resolve: {
+          lists: ListsResolver
+        }
       },
       {
         path: 'learning',
@@ -31,9 +35,12 @@ const routes: Routes = [
         canActivate: [AuthGuard]
       },
       {
-        path: 'list',
+        path: 'list/:id',
         component: WlListComponent,
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
+        resolve: {
+          list: ListResolver
+        }
       }
     ],
     canActivate: [AuthGuard]
@@ -42,6 +49,7 @@ const routes: Routes = [
 
 @NgModule({
     imports: [NativeScriptRouterModule.forChild(routes)],
-    exports: [NativeScriptRouterModule]
+    exports: [NativeScriptRouterModule],
+    providers: [ListsResolver, ListResolver]
 })
 export class HomeRoutingModule { }

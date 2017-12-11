@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterExtensions } from 'nativescript-angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 import { ApiService } from '../../shared/services/api.service';
+import { HelpersService } from '../../shared/services/helpers.service';
 
 class List {
   public name: string = null;
@@ -15,14 +16,18 @@ class List {
 })
 export class WlListComponent implements OnInit {
   list: List;
+  test: any;
 
   constructor(
-      private routerExtensions: RouterExtensions,
-      private apiService: ApiService
+    private route: ActivatedRoute,
+    private apiService: ApiService,
+    private helpersService: HelpersService
   ) { }
 
   ngOnInit() {
-      this.list = new List();
+    this.test = this.helpersService.objectToArray(this.route.snapshot.data['list'].value);
+    console.log(JSON.stringify(this.test));
+    this.list = new List();
   }
 
   addPair() {

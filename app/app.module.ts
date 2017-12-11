@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { ApiService } from './shared/services/api.service';
 import { AuthGuard } from './shared/services/auth-guard.service';
 import { DataService } from './shared/services/data.service';
+import { HelpersService } from './shared/services/helpers.service';
 
 import { AppComponent } from './app.component';
 
@@ -27,6 +28,7 @@ import { AppComponent } from './app.component';
     ApiService,
     AuthGuard,
     DataService,
+    HelpersService,
     { provide: NgModuleFactoryLoader, useClass: NSModuleFactoryLoader }
   ],
   schemas: [

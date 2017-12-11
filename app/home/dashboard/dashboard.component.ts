@@ -1,11 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../../shared/services/api.service';
+import { ActivatedRoute } from '@angular/router';
+
+import { HelpersService } from '../../shared/services/helpers.service';
 
 @Component({
-    selector: 'WlDashboard',
-    moduleId: module.id,
-    templateUrl: './dashboard.component.html'
+  selector: 'WlDashboard',
+  moduleId: module.id,
+  templateUrl: './dashboard.component.html'
 })
-export class WlDashboardComponent{
-    constructor(
-    ) { }
+export class WlDashboardComponent implements OnInit {
+  lists: any;
+  data: any;
+
+  constructor(
+    private route: ActivatedRoute,
+    private apiService: ApiService,
+    private helpersService: HelpersService
+  ) { }
+
+  ngOnInit() {
+    this.lists = this.helpersService.objectToArray(this.route.snapshot.data['lists'].value);
+  }
 }
