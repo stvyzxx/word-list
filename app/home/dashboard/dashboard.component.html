@@ -12,7 +12,7 @@
             <ListView [items]="lists">
                 <ng-template let-item="item" let-i="index" let-third="third">
                     <StackLayout>
-                        <Label [text]='item.value.name' [nsRouterLink]="['/home/list', item.id]"></Label>
+                        <Label [text]='item.value.name' [nsRouterLink]="['/home/list', item.key]"></Label>
                     </StackLayout>
                 </ng-template>
             </ListView>

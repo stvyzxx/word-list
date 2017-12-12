@@ -25,7 +25,7 @@ export class WlListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.test = this.helpersService.objectToArray(this.route.snapshot.data['list'].value);
+    this.test = this.helpersService.objectToArray(this.route.snapshot.data.list);
     console.log(JSON.stringify(this.test));
     this.list = new List();
   }

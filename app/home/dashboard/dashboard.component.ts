@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../../shared/services/api.service';
+
 import { ActivatedRoute } from '@angular/router';
+import { ApiService } from '../../shared/services/api.service';
 
 import { HelpersService } from '../../shared/services/helpers.service';
 
@@ -20,6 +21,7 @@ export class WlDashboardComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.lists = this.helpersService.objectToArray(this.route.snapshot.data['lists'].value);
+    this.lists = this.helpersService.objectToArray(this.route.snapshot.data.lists.value);
+    // console.log(JSON.stringify(this.lists));
   }
 }

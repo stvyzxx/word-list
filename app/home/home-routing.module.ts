@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { NativeScriptRouterModule } from 'nativescript-angular/router';
 
 import { AuthGuard } from '../shared/services/auth-guard.service';
@@ -10,7 +10,7 @@ import { WlLearningComponent } from './learning/learning.component';
 import { WlListComponent } from './list/list.component';
 import { WlProfileComponent } from './profile/profile.component';
 import { ListsResolver, ListResolver } from './services/resolvers.service';
-  
+
 const routes: Routes = [
   {
     path: '',
@@ -32,6 +32,11 @@ const routes: Routes = [
       {
         path: 'profile',
         component: WlProfileComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'list',
+        component: WlListComponent,
         canActivate: [AuthGuard]
       },
       {
