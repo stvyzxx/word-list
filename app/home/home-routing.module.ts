@@ -9,7 +9,7 @@ import { WlHomeComponent } from './home.component';
 import { WlLearningComponent } from './learning/learning.component';
 import { WlListComponent } from './list/list.component';
 import { WlProfileComponent } from './profile/profile.component';
-import { ListsResolver, ListResolver } from './services/resolvers.service';
+import { ListsResolver } from './services/resolvers.service';
 
 const routes: Routes = [
   {
@@ -42,10 +42,7 @@ const routes: Routes = [
       {
         path: 'list/:id',
         component: WlListComponent,
-        canActivate: [AuthGuard],
-        resolve: {
-          list: ListResolver
-        }
+        canActivate: [AuthGuard]
       }
     ],
     canActivate: [AuthGuard]
@@ -55,6 +52,6 @@ const routes: Routes = [
 @NgModule({
     imports: [NativeScriptRouterModule.forChild(routes)],
     exports: [NativeScriptRouterModule],
-    providers: [ListsResolver, ListResolver]
+    providers: [ListsResolver]
 })
 export class HomeRoutingModule { }

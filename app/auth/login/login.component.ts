@@ -11,7 +11,7 @@ import { LoginData } from '../services/user';
   styleUrls: ['../auth.component.css'],
   templateUrl: './login.component.html'
 })
-export class WlLoginComponent{
+export class WlLoginComponent {
   user: LoginData;
   personMetadata: any;
 
@@ -21,48 +21,48 @@ export class WlLoginComponent{
   ) { }
 
   ngOnInit() {
-      this.personMetadata = {
-          'isReadOnly': false,
-          'commitMode': 'immediate',
-          'validationMode': 'immediate',
-          'propertyAnnotations':
-          [
-              {
-                  'name': 'email',
-                  'displayName': 'E-Mail',
-                  'index': 0,
-                  'editor': 'Email',
-                  'required': true,
-                  'validators': [
-                      { 'name': 'Email' },
-                      {
-                          'name': 'MinimumLength',
-                          'params': {
-                              'length': 6
-                          }, 
-                      },
-                      { 'name': 'NonEmpty' }
-                  ]
+    this.personMetadata = {
+      isReadOnly: false,
+      commitMode: 'immediate',
+      validationMode: 'immediate',
+      propertyAnnotations:
+      [
+        {
+          name: 'email',
+          displayName: 'E-Mail',
+          index: 0,
+          editor: 'Email',
+          required: true,
+          validators: [
+            { name: 'Email' },
+            {
+              name: 'MinimumLength',
+              params: {
+                length: 6
               },
-              {
-                  'name': 'password',
-                  'displayName': 'Password',
-                  'index': 1,
-                  'editor': 'Password',
-                  'required': true,
-                  'validators': [
-                      {
-                          'name': 'MinimumLength',
-                          'params': {
-                              'length': 6
-                          }, 
-                      },
-                      { 'name': 'NonEmpty' }
-                  ]
-              },
+            },
+            { name: 'NonEmpty' }
           ]
-      }
-      this.user = new LoginData();
+        },
+        {
+          name: 'password',
+          displayName: 'Password',
+          index: 1,
+          editor: 'Password',
+          required: true,
+          validators: [
+            {
+              name: 'MinimumLength',
+              params: {
+                length: 6
+              },
+            },
+            { name: 'NonEmpty' }
+          ]
+        },
+      ]
+    };
+    this.user = new LoginData();
   }
 
   login() {
