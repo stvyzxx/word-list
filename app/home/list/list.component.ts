@@ -52,7 +52,7 @@ export class WlListComponent implements OnInit {
 
   saveList() {
     const data = {
-      path: '/lists' + this.list.id ? '/' + this.list.id : '',
+      path: '/lists' + (this.list.id ? '/' + this.list.id : ''),
       data: this.list
     };
     console.log(data.path);

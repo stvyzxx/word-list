@@ -36,7 +36,8 @@ export class ApiService {
   }
 
   setUserData(params) {
-    return firebase.push(
+    // TODO: change update to push
+    return firebase.update(
       '/users/' + this.dataService.currentUser + params.path,
       params.data
     );
