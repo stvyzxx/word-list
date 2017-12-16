@@ -4,6 +4,13 @@
 .wl-btn{
     background-color: $main-accent; 
     color: #fff;
+    &--success {
+        background-color: $success-dark;
+    }
+
+    &--error {
+        background-color: $error-light;
+    }
 }
 
 .wl-transparent-btn {
@@ -59,4 +66,9 @@
 
 .sideLightGrayLabel {
     background-color: lightgray;
+}
+
+/* ListView */
+.wl-list-item {
+    font-size: 20px;
 }

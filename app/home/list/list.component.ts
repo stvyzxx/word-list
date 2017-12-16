@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { RouterExtensions } from 'nativescript-angular/router';
+import { ActivityIndicator } from "ui/activity-indicator";
 import 'rxjs/add/operator/switchMap';
 
 import { ApiService } from '../../shared/services/api.service';
@@ -26,19 +28,22 @@ class List {
 })
 export class WlListComponent implements OnInit {
   list: List;
+  busyState: boolean;
 
   constructor(
     private apiService: ApiService,
     private helpersService: HelpersService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private routerExtensions: RouterExtensions
   ) {
+    this.busyState = false;
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.setList();
   }
 
-  addPair() {
+  addPair(): void {
     const pair = {
       original: null,
       translation: null
@@ -46,17 +51,30 @@ export class WlListComponent implements OnInit {
     this.list.words.push(pair);
   }
 
-  removePair(index) {
+  removePair(index): void {
     this.list.words.splice(index, 1);
   }
 
-  saveList() {
+  saveList(): void {
     const data = {
       path: '/lists' + (this.list.id ? '/' + this.list.id : ''),
-      data: this.list
+      data: this.list,
+      method: 'push'
     };
-    console.log(data.path);
-    this.apiService.setUserData(data);
+    
+    if(this.list.id) {
+      data.method = 'update';
+    }
+    this.busyState = true;
+
+    this.apiService.setUserData(data)
+      .then(response => {
+        this.routerExtensions.navigate(['home/dashboard']);
+      }).catch(e => {
+        this.busyState = false;
+        console.log(e);
+      });
+
   }
 
   setList(): any {
@@ -66,6 +84,7 @@ export class WlListComponent implements OnInit {
       .forEach(params => { id = params.id; });
 
     if (id) {
+      this.busyState = true;
       this.apiService.getUserData({
         path: '/lists/' + id
       }).then(list => {
@@ -74,7 +93,9 @@ export class WlListComponent implements OnInit {
           id: list.key,
           words: list.value.words
         });
+        this.busyState = false;
       }).catch(e => {
+        this.busyState = false;
         console.log(e);
       });
     } else {

@@ -8,12 +8,13 @@
     <!-- lists -->
     <GridLayout columns="auto, auto" height="400">
         <StackLayout col="0" width="50%">
-            <Label text="Popular lists" class="h2" textAlignment="center"></Label>
+            <Label text="Lists" class="h2" textAlignment="center"></Label>
             <ListView [items]="lists">
                 <ng-template let-item="item" let-i="index" let-third="third">
-                    <StackLayout>
-                        <Label [text]='item.value.name' [nsRouterLink]="['/home/list', item.key]"></Label>
-                    </StackLayout>
+                    <GridLayout columns="*, 60">
+                        <Label col="0"[text]='item.value.name' [nsRouterLink]="['/home/learning']" class="wl-list-item"></Label>
+                        <Button col="1" [nsRouterLink]="['/home/list', item.key]" text="&#xf044;" class="fa wl-transparent-btn"></Button>
+                    </GridLayout>
                 </ng-template>
             </ListView>
         </StackLayout>
@@ -26,7 +27,7 @@
     <!-- actions -->
     <GridLayout columns="auto, auto">
         <StackLayout col="0" width="50%" horizontalAlignment="center">
-            <Button col="1" text="Create list" class="wl-btn" [nsRouterLink]="['/home/list']"></Button>
+            <Button col="1" text="Create list" class="wl-btn wl-btn--success" [nsRouterLink]="['/home/list']"></Button>
         </StackLayout>
         <StackLayout col="1" width="50%" horizontalAlignment="center">
             <Button col="1" text="Learn random" class="wl-btn" (tap)="getRandomList()"></Button>

@@ -25,13 +25,13 @@ const routes: Routes = [
         }
       },
       {
-        path: 'learning',
-        component: WlLearningComponent,
+        path: 'profile',
+        component: WlProfileComponent,
         canActivate: [AuthGuard]
       },
       {
-        path: 'profile',
-        component: WlProfileComponent,
+        path: 'learning',
+        component: WlLearningComponent,
         canActivate: [AuthGuard]
       },
       {
