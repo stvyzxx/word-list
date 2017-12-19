@@ -35,8 +35,14 @@
     <StackLayout tkMainContent padding="15">
         <!-- action bar -->
         <ActionBar class="action-bar">
+            <NavigationButton
+                col="0" 
+                text="Go Back" 
+                android.systemIcon="ic_menu_back"    
+                (tap)="goBack()">
+            </NavigationButton>
             <GridLayout columns="*, auto">
-                <Label col="0" text="Dashboard" color="lightgray" padding="10"></Label>
+                <Label col="0" text="Dashboard" class="action-bar-label"></Label>
                 <Button col="1" text="&#xf0c9;" class="fa wl-transparent-btn" (tap)="openDrawer()"></Button>
             </GridLayout>
         </ActionBar>

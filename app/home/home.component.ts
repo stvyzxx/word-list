@@ -1,4 +1,6 @@
 import { Component, ViewChild, AfterViewInit, ChangeDetectorRef  } from '@angular/core';
+import { RouterExtensions } from 'nativescript-angular/router';
+
 import { RadSideDrawerComponent, SideDrawerType } from "nativescript-pro-ui/sidedrawer/angular";
 import { RadSideDrawer } from 'nativescript-pro-ui/sidedrawer';
 
@@ -13,19 +15,24 @@ export class WlHomeComponent implements AfterViewInit{
   @ViewChild(RadSideDrawerComponent) public drawerComponent: RadSideDrawerComponent;
 
   constructor(
-    private changeDetectionRef: ChangeDetectorRef
+    private changeDetectionRef: ChangeDetectorRef,
+    private routerExtensions: RouterExtensions
   ) { }
 
-  ngAfterViewInit() {
+  ngAfterViewInit(): void {
     this.drawer = this.drawerComponent.sideDrawer;
     this.changeDetectionRef.detectChanges();
   }
 
-  public openDrawer() {
+  public openDrawer(): void {
     this.drawer.showDrawer();
   }
 
-  public closeDrawerTap() {
+  public closeDrawerTap(): void {
     this.drawer.closeDrawer();
+  }
+
+  public goBack(): void {
+    this.routerExtensions.back();
   }
 }
