@@ -19,6 +19,7 @@ const routes: Routes = [
       {
         path: 'dashboard',
         component: WlDashboardComponent,
+        data : { page : 'Dashboard' },
         canActivate: [AuthGuard],
         resolve: {
           lists: ListsResolver
@@ -27,21 +28,25 @@ const routes: Routes = [
       {
         path: 'profile',
         component: WlProfileComponent,
+        data : { page : 'Profile' },
         canActivate: [AuthGuard]
       },
       {
         path: 'learning',
         component: WlLearningComponent,
+        data : { page : 'Learning' },
         canActivate: [AuthGuard]
       },
       {
         path: 'list',
         component: WlListComponent,
+        data : { page : 'List' },
         canActivate: [AuthGuard]
       },
       {
         path: 'list/:id',
         component: WlListComponent,
+        data : { page : 'List' },
         canActivate: [AuthGuard]
       }
     ],
