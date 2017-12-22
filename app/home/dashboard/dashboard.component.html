@@ -9,10 +9,10 @@
     <GridLayout columns="auto, auto" height="400">
         <StackLayout col="0" width="50%">
             <Label text="Lists" class="h2" textAlignment="center"></Label>
-            <ListView [items]="lists">
+            <ListView [items]="lists" class="wl-list">
                 <ng-template let-item="item" let-i="index" let-third="third">
                     <GridLayout columns="*, 60">
-                        <Label col="0"[text]='item.value.name' [nsRouterLink]="['/home/learning']" class="wl-list-item"></Label>
+                        <Label col="0"[text]='item.value.name' [nsRouterLink]="['/home/learning', item.key]" class="wl-list-label"></Label>
                         <Button col="1" [nsRouterLink]="['/home/list', item.key]" text="&#xf044;" class="fa wl-transparent-btn"></Button>
                     </GridLayout>
                 </ng-template>

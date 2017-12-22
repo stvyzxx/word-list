@@ -1,25 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { RouterExtensions } from 'nativescript-angular/router';
-import { ActivityIndicator } from "ui/activity-indicator";
 import 'rxjs/add/operator/switchMap';
+
+import { ActivityIndicator } from 'ui/activity-indicator';
 
 import { ApiService } from '../../shared/services/api.service';
 import { HelpersService } from '../../shared/services/helpers.service';
 
-class List {
-  public name: string;
-  public id: string;
-  public words: any[];
-
-  constructor(options = {}) {
-    Object.assign(this, {
-      name : null,
-      id : null,
-      words : [],
-    }, options);
-  }
-}
+import { List } from '../models/list/list';
 
 @Component({
   selector: 'WlList',
@@ -61,8 +50,8 @@ export class WlListComponent implements OnInit {
       data: this.list,
       method: 'push'
     };
-    
-    if(this.list.id) {
+
+    if (this.list.id) {
       data.method = 'update';
     }
     this.busyState = true;

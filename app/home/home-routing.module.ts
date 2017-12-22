@@ -32,7 +32,7 @@ const routes: Routes = [
         canActivate: [AuthGuard]
       },
       {
-        path: 'learning',
+        path: 'learning/:id',
         component: WlLearningComponent,
         data : { page : 'Learning' },
         canActivate: [AuthGuard]
