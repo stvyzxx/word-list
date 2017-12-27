@@ -8,9 +8,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:804256117359:android:eba0ba49a8787c4d",
+        "mobilesdk_app_id": "1:804256117359:android:e5479bacef6adb8a",
         "android_client_info": {
-          "package_name": "org.nativescript.WordList"
+          "package_name": "org.nativescript.wordlist1"
         }
       },
       "oauth_client": [

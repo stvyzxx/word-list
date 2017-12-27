@@ -33,6 +33,7 @@ export class WlLoginComponent {
           index: 0,
           editor: 'Email',
           required: true,
+          fillColor: 'red',
           validators: [
             { name: 'Email' },
             {
