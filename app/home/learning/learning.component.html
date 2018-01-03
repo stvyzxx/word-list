@@ -1,6 +1,18 @@
 <StackLayout>
     <StackLayout *ngIf="!busyState" class="wl-content">
         <Label [text]="list.name" horizontalAlignment="center" class="h2"></Label>
+        <StackLayout>
+            <Label [text]="currentNumber + '/' + pairsAmount" horizontalAlignment="center" class="h2"></Label>
+            <Label [text]="pair.original" horizontalAlignment="center" class="h3"></Label>
+            <TextField [(ngModel)]="answer" class="wl-input" hint="Original"></TextField>
+            <Label *ngIf="checkShown" horizontalAlignment="center" class="h2">
+                <FormattedString>
+                    <Span *ngIf="successfulAnswer" text="&#xf00c;" class="fa wl-text-success"></Span>
+                    <Span *ngIf="!successfulAnswer" text="&#xf00d;" class="fa wl-text-error"></Span>
+                </FormattedString>
+            </Label> 
+            <Button (tap)="checkWord()" text="Check" class="fa wl-btn wl-btn--success"></Button>
+        </StackLayout>
     </StackLayout>
     <StackLayout *ngIf="busyState" height="100%" verticalAlignment="middle">
         <ActivityIndicator #activityIndicator [busy]="busyState" width="100" height="100" class="activity-indicator"></ActivityIndicator>

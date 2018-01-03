@@ -42,6 +42,14 @@ TextField {
 
 
 /* Additional classes */
+.wl-text-success {
+  color: $success-dark;
+}
+
+.wl-text-error {
+  color: $error-light;
+}
+
 .coverImage {
    background-image: url('~/assets/bg.jpg');
    background-repeat: no-repeat;
