@@ -11,6 +11,7 @@ import { List } from '../models/list/list';
 })
 export class WlLearningComponent implements OnInit {
   list: List;
+  listId: number;
   busyState: boolean;
   pair: any;
   pairsAmount: number;
@@ -25,28 +26,36 @@ export class WlLearningComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.currentNumber = 1;
+    this.checkShown = false;
     this.setList();
   }
 
   get wordsEquality(): boolean {
-    return this.answer.trim().toLowerCase() === this.pair.translation;
+    return this.answer.trim().toLowerCase() === this.pair.translation.toLowerCase();
   }
 
-  setList(): any {
-    let id;
+  get successfulAnswers(): any[] {
+    return this.list.words.filter(pair => pair.success);
+  }
+
+  get listEnded(): boolean {
+    return (this.currentNumber - 1) >= this.list.words.length;
+  }
+
+  setList(): void {
 
     this.route.params
-      .forEach(params => { id = params.id; });
+      .forEach(params => { this.listId = params.id; });
 
     this.busyState = true;
     this.apiService.getUserData({
-      path: '/lists/' + id
+      path: '/lists/' + this.listId
     }).then(response => {
       this.list = response.value;
 
       this.pair = this.list.words[0];
       this.pairsAmount = this.list.words.length;
-      this.currentNumber = this.list.words.indexOf(this.pair) + 1;
 
       this.busyState = false;
     }).catch(e => {
@@ -56,24 +65,26 @@ export class WlLearningComponent implements OnInit {
   }
 
   checkWord(): void {
-    if (!this.answer) return;
+    if (!this.answer || this.listEnded || this.checkShown) return;
 
-    if (this.currentNumber - 1 === this.list.words.length) {
-      return;
-    }
-    if (this.wordsEquality) {
-      this.successfulAnswer = this.pair.success = true;
-    } else {
-      this.successfulAnswer = this.pair.success = false;
-    }
-    
+    this.successfulAnswer = this.pair.success = this.wordsEquality;
+
     this.checkShown = true;
-    this.answer = '';
-    this.pair = this.list.words[this.currentNumber];
-    this.currentNumber = this.list.words.indexOf(this.pair) + 1;
-
+    
     setTimeout(() => {
+      this.answer = '';
+      if (this.currentNumber <= this.list.words.length - 1) {
+        this.pair = this.list.words[this.currentNumber];
+      }
+      
+      this.currentNumber += 1;
       this.checkShown = false;
     }, 2000);
+  }
+
+  learnAgain(): void {
+    this.currentNumber = 1;
+    this.list.words.forEach(pair => pair.success = false);
+    this.pair = this.list.words[0];
   }
 }

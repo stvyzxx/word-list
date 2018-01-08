@@ -1,17 +1,48 @@
 <StackLayout>
     <StackLayout *ngIf="!busyState" class="wl-content">
         <Label [text]="list.name" horizontalAlignment="center" class="h2"></Label>
-        <StackLayout>
-            <Label [text]="currentNumber + '/' + pairsAmount" horizontalAlignment="center" class="h2"></Label>
-            <Label [text]="pair.original" horizontalAlignment="center" class="h3"></Label>
-            <TextField [(ngModel)]="answer" class="wl-input" hint="Original"></TextField>
-            <Label *ngIf="checkShown" horizontalAlignment="center" class="h2">
+
+
+        <StackLayout *ngIf="listEnded">
+            <Label horizontalAlignment="center" class="h2">
                 <FormattedString>
-                    <Span *ngIf="successfulAnswer" text="&#xf00c;" class="fa wl-text-success"></Span>
-                    <Span *ngIf="!successfulAnswer" text="&#xf00d;" class="fa wl-text-error"></Span>
+                    <Span text="The result is "></Span>
+                    <Span [text]="successfulAnswers.length + ' of ' + pairsAmount"></Span>
                 </FormattedString>
             </Label> 
-            <Button (tap)="checkWord()" text="Check" class="fa wl-btn wl-btn--success"></Button>
+            <Button 
+                (tap)="learnAgain()" 
+                text="Learn again" 
+                class="fa wl-btn wl-btn--success">
+                <FormattedString>
+                    <Span text="Learn again "></Span>
+                    <Span text="&#xf01e;"></Span>
+                </FormattedString>
+            </Button>
+            <Button 
+                [nsRouterLink]="['/home/list', listId]" 
+                text="Edit" 
+                class="wl-btn">
+            </Button>
+        </StackLayout>
+
+        <StackLayout *ngIf="!listEnded">
+            <Label [text]="currentNumber + '/' + pairsAmount" horizontalAlignment="center" class="h2"></Label>
+            <Label [text]="pair.original" horizontalAlignment="center" class="h3"></Label>
+            <GridLayout columns="*, 50" height="50">
+                <TextField col="0" [(ngModel)]="answer" class="wl-input" hint="Translation"></TextField>
+                <Label col="1" *ngIf="checkShown" horizontalAlignment="center" class="h2" verticalAlignment="middle">
+                    <FormattedString>
+                        <Span *ngIf="successfulAnswer" text="&#xf00c;" class="fa wl-text-success"></Span>
+                        <Span *ngIf="!successfulAnswer" text="&#xf00d;" class="fa wl-text-error"></Span>
+                    </FormattedString>
+                </Label> 
+            </GridLayout>
+            <Button 
+                (tap)="checkWord()" 
+                text="Check" 
+                class="fa wl-btn wl-btn--success">
+            </Button>
         </StackLayout>
     </StackLayout>
     <StackLayout *ngIf="busyState" height="100%" verticalAlignment="middle">

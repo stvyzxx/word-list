@@ -34,14 +34,14 @@
     <!-- main content -->
     <StackLayout tkMainContent padding="15">
         <!-- action bar -->
-        <ActionBar class="action-bar">
+        <ActionBar class="wl-action-bar" title="">
             <NavigationButton
                 text="Go Back" 
                 android.systemIcon="ic_menu_back"    
                 (tap)="goBack()">
             </NavigationButton>
-            <GridLayout columns="auto, auto">
-                <Label col="0" [text]="pageName" class="action-bar-label"></Label>
+            <GridLayout columns="*, auto">
+                <Label col="0" [text]="pageName" class="action-bar-label" horizontalAlignment="center"></Label>
                 <Button col="1" text="&#xf0c9;" class="fa wl-transparent-btn" (tap)="openDrawer()"></Button>
             </GridLayout>
         </ActionBar>
