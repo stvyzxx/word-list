@@ -12,7 +12,6 @@
             </Label> 
             <Button 
                 (tap)="learnAgain()" 
-                text="Learn again" 
                 class="fa wl-btn wl-btn--success">
                 <FormattedString>
                     <Span text="Learn again "></Span>
@@ -21,11 +20,13 @@
             </Button>
             <Button 
                 [nsRouterLink]="['/home/list', listId]" 
-                text="Edit" 
-                class="wl-btn">
+                class="fa wl-btn">
+                <FormattedString>
+                    <Span text="Edit list "></Span>
+                    <Span text="&#xf040;"></Span>
+                </FormattedString>
             </Button>
         </StackLayout>
-
         <StackLayout *ngIf="!listEnded">
             <Label [text]="currentNumber + '/' + pairsAmount" horizontalAlignment="center" class="h2"></Label>
             <Label [text]="pair.original" horizontalAlignment="center" class="h3"></Label>
@@ -41,7 +42,7 @@
             <Button 
                 (tap)="checkWord()" 
                 text="Check" 
-                class="fa wl-btn wl-btn--success">
+                class="fa wl-btn wl-btn--success m-marg-top">
             </Button>
         </StackLayout>
     </StackLayout>

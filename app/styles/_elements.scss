@@ -2,6 +2,8 @@
     Buttons
 */
 .wl-btn{
+    font-size: 18px;
+    height: 140px;
     background-color: $main-accent; 
     color: #fff;
     &--success {
@@ -23,7 +25,14 @@
     Main elements
 */
 .wl-content {
-    
+   padding: 50px 0 10px; 
+}
+
+.wl-input {
+    height: 140px;
+    font-size: 20px;
+    border-width: 0 0 1 0;
+    border-bottom-color: $blue-light;
 }
 
 /*
