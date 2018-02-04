@@ -1,9 +1,8 @@
 /*
     Buttons
 */
-.wl-btn{
+.wl-btn {
     font-size: 18px;
-    height: 140px;
     background-color: $main-accent; 
     color: #fff;
     &--success {
@@ -12,6 +11,11 @@
 
     &--error {
         background-color: $error-light;
+    }
+
+    &--default {
+        color: $blue-dark;
+        background-color: $background-dark;
     }
 }
 

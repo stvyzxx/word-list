@@ -1,15 +1,21 @@
 <ScrollView class="coverImage">
-    <StackLayout>
-        <Image src="res://logo" stretch="none" horizontalAlignment="center"></Image>
+    <StackLayout verticalAlignment="middle">
+        <StackLayout>
+            <RadDataForm
+                tkExampleTitle 
+                tkToggleNavButton 
+                [source]="user" 
+                [metadata]="personMetadata">
+            </RadDataForm>
+        </StackLayout>
         
-        <RadDataForm tkExampleTitle tkToggleNavButton 
-            [source]="user" 
-            [metadata]="personMetadata">
-        </RadDataForm>
-        
-        <Button text="Sign in" class="submit-button wl-btn" (tap)="login()"></Button>
         <Button 
-            class="wl-link"
+            text="Sign in" 
+            class="wl-btn wl-marg-bottom--medium" 
+            (tap)="login()">
+        </Button>
+        <Button 
+            class="wl-btn wl-btn--default"
             text="Registration"
             [nsRouterLink]="['../registration']">
         </Button>

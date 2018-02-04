@@ -1,7 +1,7 @@
 <ScrollView class="coverImage">
-    <StackLayout orientation="vertical" height="450">
-        <Image src="res://logo" stretch="none" horizontalAlignment="center"></Image>
-
+    <StackLayout 
+        orientation="vertical" 
+        verticalAlignment="middle">
         <RadDataForm tkExampleTitle tkToggleNavButton 
             [source]="user" 
             [metadata]="personMetadata"
@@ -10,7 +10,7 @@
         
         <Button text="Register" class="submit-button wl-btn" (tap)="register()"></Button>
         <Button 
-            class="wl-link"
+            class="wl-btn wl-btn--default"
             text="Sign In"
             [nsRouterLink]="['../login']">
         </Button>

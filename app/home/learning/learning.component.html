@@ -20,7 +20,7 @@
             </Button>
             <Button 
                 [nsRouterLink]="['/home/list', listId]" 
-                class="fa wl-btn">
+                class="fa wl-btn wl-marg-top--medium">
                 <FormattedString>
                     <Span text="Edit list "></Span>
                     <Span text="&#xf040;"></Span>
@@ -47,6 +47,12 @@
         </StackLayout>
     </StackLayout>
     <StackLayout *ngIf="busyState" height="100%" verticalAlignment="middle">
-        <ActivityIndicator #activityIndicator [busy]="busyState" width="100" height="100" class="activity-indicator"></ActivityIndicator>
+        <ActivityIndicator 
+            #activityIndicator 
+            [busy]="busyState" 
+            width="100" 
+            height="100" 
+            class="activity-indicator">
+        </ActivityIndicator>
     </StackLayout>
 </StackLayout>
