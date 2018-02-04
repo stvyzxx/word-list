@@ -3,18 +3,42 @@
         <StackLayout>
             <Label text="List" class="h2"></Label>
             <Label text="Name" class="h3"></Label>
-            <TextField [(ngModel)]="list.name" class="wl-input" hint="Type a name"></TextField>
+            <TextField 
+                [(ngModel)]="list.name" 
+                class="wl-input" 
+                hint="Type a name">
+            </TextField>
             <!-- column labels -->
-            <GridLayout columns="160, 160, *" height="30" class="m-marg-top">
+            <GridLayout 
+                columns="160, 160, *" 
+                height="30" 
+                class="m-marg-top">
                 <Label col="0" text="Original" class="h3"></Label>
                 <Label col="1" text="Translation" class="h3"></Label>
             </GridLayout>
             <!-- list of words -->
-            <StackLayout height="50" *ngFor="let item of list.words; index as i;">  
+            <StackLayout 
+                height="50" 
+                *ngFor="let item of list.words; index as i;">  
                 <GridLayout columns="160, 160, *">
-                    <TextField [(ngModel)]="item.original" class="wl-input medium-spacing" hint="Original" col="0"></TextField>
-                    <TextField [(ngModel)]="item.translation" class="wl-input medium-spacing" hint="Translation" col="1"></TextField>
-                    <Button (tap)="removePair(i)" text="&#xf00d;" col="2" class="fa wl-btn wl-btn--error"></Button>
+                    <TextField 
+                        [(ngModel)]="item.original" 
+                        class="wl-input wl-input--grid-elem" 
+                        hint="Original" 
+                        col="0">
+                    </TextField>
+                    <TextField 
+                        [(ngModel)]="item.translation" 
+                        class="wl-input wl-input--grid-elem" 
+                        hint="Translation" 
+                        col="1">
+                    </TextField>
+                    <Button 
+                        (tap)="removePair(i)" 
+                        text="&#xf00d;" 
+                        col="2" 
+                        class="fa wl-btn wl-btn--error">
+                    </Button>
                 </GridLayout>
             </StackLayout>
         </StackLayout>

@@ -1,4 +1,8 @@
-<RadSideDrawer tkExampleTitle tkToggleNavButton>
+<RadSideDrawer
+    (drawerOpening)="onDrawerOpened($event)"
+    (drawerClosing)="onDrawerClosed($event)" 
+    tkExampleTitle 
+    tkToggleNavButton>
     <!-- menu -->
     <StackLayout tkDrawerContent class="sideStackLayout">
         <StackLayout class="sideStackLayout">
@@ -34,16 +38,31 @@
     <!-- main content -->
     <StackLayout tkMainContent padding="15">
         <!-- action bar -->
-        <ActionBar class="wl-action-bar" title="">
+        <ActionBar 
+            class="wl-action-bar" 
+            [title]="pageName">
             <NavigationButton
                 text="Go Back" 
                 android.systemIcon="ic_menu_back"    
                 (tap)="goBack()">
             </NavigationButton>
-            <GridLayout columns="*, auto">
-                <Label col="0" [text]="pageName" class="action-bar-label" horizontalAlignment="center"></Label>
-                <Button col="1" text="&#xf0c9;" class="fa wl-transparent-btn" (tap)="openDrawer()"></Button>
-            </GridLayout>
+
+            <ActionItem
+                (tap)="openDrawer()"
+                ios.position="right">
+                <StackLayout>
+                    <Label 
+                        text="&#xf0c9;" 
+                        class="fa wl-transparent-btn"
+                        visibility="{{ isOpenedDrawer ? 'collapse' : 'visible' }}">
+                    </Label>
+                    <Label 
+                        text="&#xf00d;" 
+                        class="fa wl-transparent-btn"
+                        visibility="{{ isOpenedDrawer ? 'visible' : 'collapse' }}">
+                    </Label>
+                </StackLayout>
+            </ActionItem>
         </ActionBar>
         <!-- outlet -->
         <router-outlet></router-outlet>

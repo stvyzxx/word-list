@@ -2,13 +2,21 @@
     <StackLayout 
         orientation="vertical" 
         verticalAlignment="middle">
-        <RadDataForm tkExampleTitle tkToggleNavButton 
-            [source]="user" 
-            [metadata]="personMetadata"
-            (propertyValidate)="onPropertyValidate($event)">
-        </RadDataForm>
+        <StackLayout>
+            <RadDataForm 
+                tkExampleTitle 
+                tkToggleNavButton 
+                [source]="user" 
+                [metadata]="personMetadata"
+                (propertyValidate)="onPropertyValidate($event)">
+            </RadDataForm>
+        </StackLayout>
         
-        <Button text="Register" class="submit-button wl-btn" (tap)="register()"></Button>
+        <Button 
+            text="Register" 
+            class="submit-button wl-btn" 
+            (tap)="register()">
+        </Button>
         <Button 
             class="wl-btn wl-btn--default"
             text="Sign In"

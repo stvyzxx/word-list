@@ -6,31 +6,68 @@
     </GridLayout>
 
     <!-- lists -->
-    <GridLayout columns="auto, auto" height="320">
+    <GridLayout 
+        columns="auto, auto" 
+        height="340">
         <StackLayout col="0" width="50%">
-            <Label text="Lists" class="h2" textAlignment="center"></Label>
+            <Label 
+                text="Lists" 
+                class="h2" 
+                textAlignment="center">
+            </Label>
             <ListView [items]="lists" class="wl-list">
-                <ng-template let-item="item" let-i="index" let-third="third">
-                    <GridLayout columns="*, 60">
-                        <Label col="0"[text]='item.value.name' [nsRouterLink]="['/home/learning', item.key]" class="wl-list-label"></Label>
-                        <Button col="1" [nsRouterLink]="['/home/list', item.key]" text="&#xf044;" class="fa wl-transparent-btn"></Button>
+                <ng-template 
+                    let-item="item" 
+                    let-i="index" 
+                    let-third="third">
+                    <GridLayout columns="*, 65">
+                        <Label 
+                            col="0" 
+                            [text]='item.value.name' 
+                            [nsRouterLink]="['/home/learning', item.key]" 
+                            class="wl-list-label">
+                        </Label>
+                        <Button 
+                            col="1" 
+                            [nsRouterLink]="['/home/list', item.key]" 
+                            text="&#xf044;" 
+                            class="fa wl-transparent-btn wl-icon-btn">
+                        </Button>
                     </GridLayout>
                 </ng-template>
             </ListView>
         </StackLayout>
 
         <StackLayout col="1" width="50%">
-            <Label text="Unknown words" class="h2" textAlignment="center"></Label>
+            <Label 
+                text="Unknown words" 
+                class="h2" 
+                textAlignment="center">
+            </Label>
         </StackLayout>
     </GridLayout>
 
     <!-- actions -->
     <GridLayout columns="auto, auto">
-        <StackLayout col="0" width="50%" horizontalAlignment="center">
-            <Button col="1" text="Create list" class="wl-btn wl-btn--success" [nsRouterLink]="['/home/list']"></Button>
+        <StackLayout 
+            col="0" 
+            width="50%" 
+            horizontalAlignment="center">
+            <Button 
+                text="Create list" 
+                class="wl-btn wl-btn--success" [
+                nsRouterLink]="['/home/list']">
+            </Button>
         </StackLayout>
-        <StackLayout col="1" width="50%" horizontalAlignment="center">
-            <Button col="1" text="Learn random" class="wl-btn" (tap)="getRandomList()"></Button>
+        <StackLayout 
+            col="1" 
+            width="50%" 
+            horizontalAlignment="center">
+            <Button 
+                text="Learn random" 
+                class="wl-btn" 
+                (tap)="getRandomList()">
+            </Button>
         </StackLayout>
     </GridLayout>
 </StackLayout>

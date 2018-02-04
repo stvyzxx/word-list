@@ -1,0 +1,30 @@
+/*
+    Buttons
+*/
+.wl-btn {
+  font-size: 18px;
+  background-color: $main-accent; 
+  color: #fff;
+  &--success {
+      background-color: $success-dark;
+  }
+
+  &--error {
+      background-color: $error-light;
+  }
+
+  &--default {
+      color: $blue-dark;
+      background-color: $background-dark;
+  }
+}
+
+.wl-transparent-btn {
+  background-color: transparent;
+  border-color: transparent;
+  border-width: 1;
+}
+
+.wl-icon-btn {
+  font-size: 26px;
+}

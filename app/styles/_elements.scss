@@ -1,31 +1,4 @@
 /*
-    Buttons
-*/
-.wl-btn {
-    font-size: 18px;
-    background-color: $main-accent; 
-    color: #fff;
-    &--success {
-        background-color: $success-dark;
-    }
-
-    &--error {
-        background-color: $error-light;
-    }
-
-    &--default {
-        color: $blue-dark;
-        background-color: $background-dark;
-    }
-}
-
-.wl-transparent-btn {
-    background-color: transparent;
-    border-color: transparent;
-    border-width: 1;
-}
-
-/*
     Main elements
 */
 .wl-content {
@@ -37,6 +10,11 @@
     font-size: 20px;
     border-width: 0 0 1 0;
     border-bottom-color: $blue-light;
+
+}
+
+.wl-input--grid-elem {
+    margin-right: 40px;
 }
 
 /*

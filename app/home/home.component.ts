@@ -11,9 +11,12 @@ import { RadSideDrawer } from 'nativescript-pro-ui/sidedrawer';
   templateUrl: './home.component.html'
 })
 export class WlHomeComponent implements AfterViewInit{
+  @ViewChild(RadSideDrawerComponent) 
+  public drawerComponent: RadSideDrawerComponent;
+  public pageName: string;
+  public isOpenedDrawer = false;
+  
   private drawer: RadSideDrawer;
-  pageName: any;
-  @ViewChild(RadSideDrawerComponent) public drawerComponent: RadSideDrawerComponent;
 
   constructor(
     private changeDetectionRef: ChangeDetectorRef,
@@ -33,7 +36,7 @@ export class WlHomeComponent implements AfterViewInit{
   }
 
   public openDrawer(): void {
-    this.drawer.showDrawer();
+    this.drawer.toggleDrawerState();
   }
 
   public closeDrawerTap(): void {
@@ -42,5 +45,13 @@ export class WlHomeComponent implements AfterViewInit{
 
   public goBack(): void {
     this.routerExtensions.back();
+  }
+
+  public onDrawerOpened(): void {
+    this.isOpenedDrawer = true;
+  }
+
+  public onDrawerClosed(): void {
+    this.isOpenedDrawer = false;
   }
 }
