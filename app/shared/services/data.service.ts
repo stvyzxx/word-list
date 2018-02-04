@@ -20,7 +20,7 @@ export class DataService {
     };
   }
 
-  get currentUser() {
+  get currentUser(): any {
     return this.data.uid;
   }
 }

@@ -43,10 +43,6 @@ export class WlHomeComponent implements AfterViewInit{
     this.drawer.closeDrawer();
   }
 
-  public goBack(): void {
-    this.routerExtensions.back();
-  }
-
   public onDrawerOpened(): void {
     this.isOpenedDrawer = true;
   }

@@ -10,9 +10,10 @@ export class ListsResolver implements Resolve<any> {
     private apiService: ApiService
   ) {}
 
-  resolve(): Promise<any>|any {
+  resolve(): Promise<any> {
     const params = {
-      path: '/lists'
+      path: '/lists',
+      limit: 10
     };
     return this.apiService
       .getUserData(params);

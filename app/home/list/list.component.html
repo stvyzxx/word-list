@@ -1,56 +1,98 @@
 <StackLayout height="100%" verticalAlignment="middle">
     <StackLayout class="wl-content" *ngIf="!busyState">
         <StackLayout>
-            <Label text="List" class="h2"></Label>
-            <Label text="Name" class="h3"></Label>
-            <TextField 
-                [(ngModel)]="list.name" 
-                class="wl-input" 
-                hint="Type a name">
-            </TextField>
-            <!-- column labels -->
-            <GridLayout 
-                columns="160, 160, *" 
-                height="30" 
-                class="m-marg-top">
-                <Label col="0" text="Original" class="h3"></Label>
-                <Label col="1" text="Translation" class="h3"></Label>
-            </GridLayout>
-            <!-- list of words -->
             <StackLayout 
-                height="50" 
-                *ngFor="let item of list.words; index as i;">  
-                <GridLayout columns="160, 160, *">
-                    <TextField 
-                        [(ngModel)]="item.original" 
-                        class="wl-input wl-input--grid-elem" 
-                        hint="Original" 
-                        col="0">
-                    </TextField>
-                    <TextField 
-                        [(ngModel)]="item.translation" 
-                        class="wl-input wl-input--grid-elem" 
-                        hint="Translation" 
-                        col="1">
-                    </TextField>
-                    <Button 
-                        (tap)="removePair(i)" 
-                        text="&#xf00d;" 
-                        col="2" 
-                        class="fa wl-btn wl-btn--error">
-                    </Button>
+                height="70">
+                <Label text="Name" class="h3"></Label>
+                <TextField 
+                    [(ngModel)]="list.name" 
+                    class="wl-input" 
+                    hint="Type a name">
+                </TextField>
+            </StackLayout> 
+            <!-- column labels -->
+            <StackLayout>
+                <GridLayout 
+                    columns="auto, auto" 
+                    height="30" 
+                    class="m-marg-top">
+                    <Label 
+                        col="0" 
+                        width="45%" 
+                        text="Original" 
+                        class="h3">
+                    </Label>
+                    <Label 
+                        col="1" 
+                        width="45%" 
+                        text="Translation"
+                        class="h3">
+                    </Label>
                 </GridLayout>
-            </StackLayout>
+            </StackLayout> 
+            <!-- list of words -->
+            <ListView [items]="list.words" height="260">
+                <ng-template 
+                    let-item="item" 
+                    let-i="index">
+                    <GridLayout 
+                        height="50" 
+                        columns="auto, auto, auto">
+                        <StackLayout 
+                            col="0" 
+                            width="45%">
+                            <TextField
+                                [(ngModel)]="item.original" 
+                                class="wl-input wl-input--grid-elem" 
+                                hint="Original">
+                            </TextField>
+                        </StackLayout>
+                        <StackLayout 
+                            col="1" 
+                            width="45%">
+                            <TextField 
+                                [(ngModel)]="item.translation" 
+                                class="wl-input wl-input--grid-elem" 
+                                hint="Translation">
+                            </TextField>
+                        </StackLayout>
+                        <StackLayout 
+                            col="2" 
+                            width="10%">
+                            <Button 
+                                (tap)="removePair(i)" 
+                                text="&#xf00d;"
+                                class="fa wl-btn wl-btn--error">
+                            </Button>
+                        </StackLayout>
+                    </GridLayout>
+                </ng-template>
+            </ListView>
+
         </StackLayout>
         <!-- actions -->
         <GridLayout columns="auto, auto" class="m-marg-top">
             <StackLayout col="0" width="50%" horizontalAlignment="center">
-                <Button (tap)="addPair()" text="Add pair"  class="wl-btn"></Button>
+                <Button 
+                    (tap)="addPair()" 
+                    text="Add pair" 
+                    class="wl-btn">
+                </Button>
             </StackLayout>
             <StackLayout col="1" width="50%" horizontalAlignment="center">
-                <Button (tap)="saveList()" col="1" text="Save" class="wl-btn wl-btn--success"></Button>
+                <Button 
+                    (tap)="saveList()" 
+                    text="Save" 
+                    class="wl-btn wl-btn--success">
+                </Button>
             </StackLayout>
         </GridLayout>
     </StackLayout>
-    <ActivityIndicator #activityIndicator [busy]="busyState" width="100" height="100" class="activity-indicator"></ActivityIndicator>
+    <ActivityIndicator 
+        #activityIndicator 
+        [busy]="busyState" 
+        width="100" 
+        height="100" 
+        class="activity-indicator">
+    </ActivityIndicator>
 </StackLayout>

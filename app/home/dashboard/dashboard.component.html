@@ -1,21 +1,18 @@
 <StackLayout class="wl-content">
-    <Label text="Dashboard" class="h2"></Label>
-    <!-- statistic -->
-    <GridLayout columns="*" height="50">
-        <Label col="0" text="Statistic section"></Label>
-    </GridLayout>
-
     <!-- lists -->
     <GridLayout 
         columns="auto, auto" 
-        height="340">
+        height="420">
         <StackLayout col="0" width="50%">
             <Label 
                 text="Lists" 
                 class="h2" 
                 textAlignment="center">
             </Label>
-            <ListView [items]="lists" class="wl-list">
+            <ListView 
+                [items]="lists" 
+                class="wl-list" 
+                height="100%">
                 <ng-template 
                     let-item="item" 
                     let-i="index" 
@@ -55,8 +52,8 @@
             horizontalAlignment="center">
             <Button 
                 text="Create list" 
-                class="wl-btn wl-btn--success" [
-                nsRouterLink]="['/home/list']">
+                class="wl-btn wl-btn--success"
+                [nsRouterLink]="['/home/list']">
             </Button>
         </StackLayout>
         <StackLayout 

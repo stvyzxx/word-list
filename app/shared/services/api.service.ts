@@ -42,7 +42,15 @@ export class ApiService {
     );
   }
 
-  getUserData(params) {
+  getUserData(params): Promise<any> {
+    const options: any = {
+      singleEvent: true,
+      orderBy: {
+        type: firebase.QueryOrderByType.CHILD,
+        value: 'since'
+      },
+    };
+
     const onQueryEvent = result => {
       if (!result.error) {
         // console.log("Event type: " + result.type);
@@ -50,16 +58,17 @@ export class ApiService {
         // console.log("Value: " + JSON.stringify(result.value));
       }
     };
+    if (params.limit) {
+      options.limit = {
+        type: firebase.QueryLimitType.LAST,
+        value: params.limit
+      };
+    }
+
     return firebase.query(
       onQueryEvent,
       '/users/' + this.dataService.currentUser + params.path,
-      {
-        singleEvent: true,
-        orderBy: {
-          type: firebase.QueryOrderByType.CHILD,
-          value: 'since'
-        },
-      }
+      options
     );
   }
 }

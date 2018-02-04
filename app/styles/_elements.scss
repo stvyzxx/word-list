@@ -74,7 +74,15 @@
 }
 
 /* ListView */
-.wl-list{
+ListView { 
+    separator-color: transparent; 
+}
+
+.wl-list {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+
     .wl-list-label {
         padding: 12 0;
     }
