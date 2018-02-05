@@ -17,6 +17,11 @@
       color: $blue-dark;
       background-color: $background-dark;
   }
+
+  &:disabled {
+    color: #fff;
+    background-color: $light-gray; 
+  }
 }
 
 .wl-transparent-btn {

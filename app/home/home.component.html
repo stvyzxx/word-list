@@ -5,10 +5,7 @@
     tkToggleNavButton>
     <!-- menu -->
     <StackLayout tkDrawerContent class="sideStackLayout">
-        <StackLayout class="sideStackLayout">
-            <StackLayout horizontalAlignment="right">
-                <Button text="&#xf00d;" class="fa wl-transparent-btn" (tap)="closeDrawerTap()"></Button>
-            </StackLayout>     
+        <StackLayout class="sideStackLayout">     
             <Label text="Profile" 
                 [nsRouterLink]="['./profile']" 
                 nsRouterLinkActive="active"

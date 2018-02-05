@@ -91,3 +91,14 @@ ListView {
 .wl-list-label {
     font-size: 20px;
 }
+
+/* badges */
+.wl-badge {
+    padding: 2 10;
+    font-size: 18px;
+    border-radius: 2;
+    &--error {
+        color: #fff;
+        background-color: $error-light;
+    }
+}

@@ -2,15 +2,15 @@
     <StackLayout 
         orientation="vertical" 
         verticalAlignment="middle">
-        <StackLayout>
-            <RadDataForm 
-                tkExampleTitle 
-                tkToggleNavButton 
-                [source]="user" 
-                [metadata]="personMetadata"
-                (propertyValidate)="onPropertyValidate($event)">
-            </RadDataForm>
-        </StackLayout>
+
+        <RadDataForm 
+            tkExampleTitle 
+            tkToggleNavButton 
+            [source]="user" 
+            [metadata]="personMetadata"
+            (propertyValidate)="onPropertyValidate($event)">
+        </RadDataForm>
+
         
         <Button 
             text="Register" 

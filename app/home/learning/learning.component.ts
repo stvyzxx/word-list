@@ -18,7 +18,7 @@ export class WlLearningComponent implements OnInit {
   currentNumber: number;
   answer: string;
   successfulAnswer: boolean;
-  checkShown: boolean;
+  isChecked: boolean;
 
   constructor(
     private route: ActivatedRoute,
@@ -27,7 +27,7 @@ export class WlLearningComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentNumber = 1;
-    this.checkShown = false;
+    this.isChecked = false;
     this.setList();
   }
 
@@ -65,21 +65,23 @@ export class WlLearningComponent implements OnInit {
   }
 
   checkWord(): void {
-    if (!this.answer || this.listEnded || this.checkShown) return;
+    if (!this.answer || this.listEnded || this.isChecked) return;
 
     this.successfulAnswer = this.pair.success = this.wordsEquality;
 
-    this.checkShown = true;
+    this.isChecked = true;
+  }
+
+  nextWord(): void {
+    if (!this.isChecked) return;
+
+    this.answer = '';
+    if (this.currentNumber <= this.list.words.length - 1) {
+      this.pair = this.list.words[this.currentNumber];
+    }
     
-    setTimeout(() => {
-      this.answer = '';
-      if (this.currentNumber <= this.list.words.length - 1) {
-        this.pair = this.list.words[this.currentNumber];
-      }
-      
-      this.currentNumber += 1;
-      this.checkShown = false;
-    }, 2000);
+    this.currentNumber += 1;
+    this.isChecked = false;
   }
 
   learnAgain(): void {
