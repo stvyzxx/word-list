@@ -84,7 +84,7 @@
                         class="wl-badge wl-badge--error" 
                         *ngIf="isChecked && !successfulAnswer"> 
                         <FormattedString>
-                            <Span text="The correct answer - "></Span>
+                            <Span text="The correct answer is - "></Span>
                             <Span [text]="pair.translation"></Span>
                         </FormattedString>
                     </Label>  
@@ -92,7 +92,7 @@
             </GridLayout>
 
             <!-- action buttons -->
-            <GridLayout 
+            <GridLayout
                 columns="auto, auto">
                 <StackLayout 
                     col="0" 

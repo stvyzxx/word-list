@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { ActivatedRoute } from '@angular/router';
 import { RouterExtensions } from 'nativescript-angular/router';
 
@@ -25,5 +24,17 @@ export class WlDashboardComponent implements OnInit {
 
   ngOnInit() {
     this.lists = this.helpersService.objectToArray(this.route.snapshot.data.lists.value);
+  }
+
+  getRandomList() {
+    let randomId: string;
+    let listIds: string[] = [];
+
+    this.lists.map(({ value }) => {
+      listIds.push(value.id)
+    })
+
+    randomId = listIds[Math.floor(Math.random() * listIds.length)]
+    this.routerExtensions.navigate(['home/learning', randomId]);
   }
 }
