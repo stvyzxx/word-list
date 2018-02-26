@@ -1,9 +1,11 @@
 <StackLayout class="wl-content">
     <!-- lists -->
-    <GridLayout 
-        columns="auto, auto" 
-        height="420">
-        <StackLayout col="0" width="50%">
+    <GridLayout
+        height="420"
+        columns="auto, auto" >
+        <StackLayout 
+            col="0" 
+            width="50%">
             <Label 
                 text="Lists" 
                 class="h2" 
@@ -12,11 +14,9 @@
             <ListView 
                 [items]="lists" 
                 class="wl-list" 
-                height="100%">
+                height="75%">
                 <ng-template 
-                    let-item="item" 
-                    let-i="index" 
-                    let-third="third">
+                    let-item="item">
                     <GridLayout columns="*, 65">
                         <Label 
                             col="0" 
@@ -28,11 +28,16 @@
                             col="1" 
                             [nsRouterLink]="['/home/list', item.key]" 
                             text="&#xf044;" 
-                            class="fa wl-transparent-btn wl-icon-btn">
+                            class="fa wl-btn wl-btn--default">
                         </Button>
                     </GridLayout>
                 </ng-template>
             </ListView>
+            <Button 
+                [nsRouterLink]="['/home/lists']" 
+                text="View All" 
+                class="wl-btn wl-btn--link">
+            </Button>
         </StackLayout>
 
         <StackLayout col="1" width="50%">

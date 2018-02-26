@@ -10,6 +10,7 @@ import { WlHomeComponent } from './home.component';
 import { WlLearningComponent } from './learning/learning.component';
 import { WlListComponent } from './list/list.component';
 import { WlProfileComponent } from './profile/profile.component';
+import { WlListsComponent } from './lists/lists.component';
 
 @NgModule({
     imports: [
@@ -23,7 +24,8 @@ import { WlProfileComponent } from './profile/profile.component';
         WlDashboardComponent,
         WlLearningComponent,
         WlProfileComponent,
-        WlListComponent
+        WlListComponent,
+        WlListsComponent
     ],
     entryComponents: [
     ],

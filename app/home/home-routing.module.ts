@@ -9,6 +9,8 @@ import { WlHomeComponent } from './home.component';
 import { WlLearningComponent } from './learning/learning.component';
 import { WlListComponent } from './list/list.component';
 import { WlProfileComponent } from './profile/profile.component';
+import { WlListsComponent } from './lists/lists.component';
+
 import { ListsResolver } from './services/resolvers.service';
 
 const routes: Routes = [
@@ -19,7 +21,12 @@ const routes: Routes = [
       {
         path: 'dashboard',
         component: WlDashboardComponent,
-        data : { page : 'Dashboard' },
+        data : { 
+          page : 'Dashboard',
+          listsResolverParams: {
+            limit: 6
+          }
+        },
         canActivate: [AuthGuard],
         resolve: {
           lists: ListsResolver
@@ -48,7 +55,13 @@ const routes: Routes = [
         component: WlListComponent,
         data : { page : 'List' },
         canActivate: [AuthGuard]
-      }
+      },
+      {
+        path: 'lists',
+        component: WlListsComponent,
+        data : { page : 'All saved lists' },
+        canActivate: [AuthGuard]
+      },
     ],
     canActivate: [AuthGuard]
   }

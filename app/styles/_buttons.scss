@@ -18,6 +18,12 @@
       background-color: $background-dark;
   }
 
+  &--link {
+    color: $blue-dark;
+    background-color: $background-dark;
+    border-bottom: 1px solid $midnight-light;
+  }
+
   &:disabled {
     color: #fff;
     background-color: $light-gray; 
