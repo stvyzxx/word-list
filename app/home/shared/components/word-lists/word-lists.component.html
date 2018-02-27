@@ -1,0 +1,22 @@
+<ListView 
+  [items]="items" 
+  class="wl-list" 
+  height="75%">
+  <ng-template 
+    let-item="item">
+    <GridLayout columns="*, 65">
+      <Label 
+        col="0" 
+        [text]='item.value.name' 
+        [nsRouterLink]="['/home/learning', item.key]" 
+        class="wl-list-label">
+      </Label>
+      <Button 
+        col="1" 
+        [nsRouterLink]="['/home/list', item.key]" 
+        text="&#xf044;" 
+        class="fa wl-btn wl-btn--default">
+      </Button>
+    </GridLayout>
+  </ng-template>
+</ListView>

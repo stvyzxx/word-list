@@ -65,7 +65,9 @@ export class WlLearningComponent implements OnInit {
   }
 
   checkWord(): void {
-    if (!this.answer || this.listEnded || this.isChecked) return;
+    if (!this.answer || this.listEnded || this.isChecked) {
+      return;
+    }
 
     this.successfulAnswer = this.pair.success = this.wordsEquality;
 
@@ -73,13 +75,15 @@ export class WlLearningComponent implements OnInit {
   }
 
   nextWord(): void {
-    if (!this.isChecked) return;
+    if (!this.isChecked) {
+      return;
+    }
 
     this.answer = '';
     if (this.currentNumber <= this.list.words.length - 1) {
       this.pair = this.list.words[this.currentNumber];
     }
-    
+
     this.currentNumber += 1;
     this.isChecked = false;
   }
